@@ -1,0 +1,5 @@
+n = input('enter number:')
+digits = list(n)
+non_zero = [d for d in digits if d != '0']
+zeros = ['0'] * (len(digits) - len(non_zero))
+print(''.join(non_zero + zeros))
