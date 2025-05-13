@@ -1,0 +1,27 @@
+def pair_strings(s1, s2):
+    result = []
+    min_length = min(len(s1), len(s2))
+    
+    for i in range(min_length):
+        result.append(s1[i])
+        result.append(s2[i])
+    
+    if len(s1) > len(s2):
+        for ch in s1[min_length:]:
+            if 'a' <= ch <= 'z':
+                result.append(chr(ord(ch) - 32))
+            else:
+                result.append(ch)
+    elif len(s2) > len(s1):
+        for ch in s2[min_length:]:
+            if 'a' <= ch <= 'z':
+                result.append(chr(ord(ch) - 32))
+            else:
+                result.append(ch)
+    
+    return ''.join(result)
+
+s1 = input()
+s2 = input()
+
+print(pair_strings(s1, s2))
