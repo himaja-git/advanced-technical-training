@@ -1,0 +1,39 @@
+from typing import List
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        n = len(matrix)       # number of rows
+        m = len(matrix[0])    # number of columns
+        row = 0
+        col = m - 1
+
+        while row < n and col >= 0:
+            if matrix[row][col] == target:
+                return True
+            elif target > matrix[row][col]:
+                row += 1
+            else:  # target < matrix[row][col]
+                col -= 1
+
+        return False
+
+if __name__ == "__main__":
+    # Take input from user
+    rows = int(input("Enter number of rows: "))
+    cols = int(input("Enter number of columns: "))
+
+    matrix = []
+    print("Enter the matrix row by row (space-separated):")
+    for i in range(rows):
+        row = list(map(int, input(f"Row {i+1}: ").split()))
+        if len(row) != cols:
+            print(f"Each row must have {cols} elements. Try again.")
+            exit()
+        matrix.append(row)
+
+    target = int(input("Enter the target value to search: "))
+
+    # Search
+    sol = Solution()
+    result = sol.searchMatrix(matrix, target)
+    print("Target found:" if result else "Target not found.")
