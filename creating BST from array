@@ -1,0 +1,43 @@
+class Node:
+    def __init__(self, data):
+        self.left = None
+        self.val = data
+        self.right = None
+
+def createBST(arr):
+    root = None
+    for data in arr:
+        if root is None:
+            root = Node(data)
+        else:
+            temp = root
+            while True:
+                if data < temp.val:
+                    if temp.left is None:
+                        temp.left = Node(data)
+                        break
+                    else:
+                        temp = temp.left
+                elif data > temp.val:
+                    if temp.right is None:
+                        temp.right = Node(data)
+                        break
+                    else:
+                        temp = temp.right
+                else:
+                    # Skip inserting duplicate
+                    break
+    return root
+
+# Optional: Inorder traversal to verify tree
+def inorder(node):
+    if node:
+        inorder(node.left)
+        print(node.val, end=' ')
+        inorder(node.right)
+
+# Driver Code
+arr = list(map(int, input('Enter an array: ').split()))
+root = createBST(arr)
+print("Inorder traversal of BST:")
+inorder(root)
