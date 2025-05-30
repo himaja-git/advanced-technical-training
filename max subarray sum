@@ -1,0 +1,9 @@
+arr=list(map(int,input().split()))
+k=int(input())
+n=len(arr)
+maxSum=0
+for i in range(0,n):
+    for j in range(i,n):
+        if(len(arr[i:j+1])==k):
+            maxSum=max(maxSum,sum(arr[i:j+1]))
+print(maxSum)
