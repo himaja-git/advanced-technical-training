@@ -1,0 +1,15 @@
+arr=list(map(int,input().split()))
+k=int(input())
+n=len(arr)
+maxLen=0
+left=0
+right=0
+Sum=0
+while(right<n):
+    Sum+=arr[right]
+    while(Sum>k):
+        Sum-=arr[left]
+        left+=1
+    maxLen=max(maxLen,right-left+1)
+    right+=1
+print(maxLen)
