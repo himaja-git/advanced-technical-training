@@ -7,7 +7,7 @@ right=0
 Sum=0
 while(right<n):
     Sum+=arr[right]
-    while(Sum>k):
+    if(Sum>k):
         Sum-=arr[left]
         left+=1
     maxLen=max(maxLen,right-left+1)
